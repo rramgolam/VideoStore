@@ -11,13 +11,14 @@ namespace VideoStore.Test
         }
 
         [Test]
-        public void whenIadd2DaysToRental_thenThePriceShouldBe2Pounds()
+        public void whenIAdd2DaysToRental_thenThePriceShouldBe2Pounds()
         {
             RentalCalculator rentalCalculator = new RentalCalculator();
             float expectedPrice = 2.0f;
             rentalCalculator.Days = 2;
+            rentalCalculator.calculatePrice();
 
-            Assert.AreEqual(expectedPrice, rentalCalculator.calculatePrice());
+            Assert.AreEqual(expectedPrice, rentalCalculator.Price);
         }
     }
 }
