@@ -17,7 +17,7 @@ namespace VideoStore.Test
         [Test]
         public void whenIHaveAThreeDayRental_thenThePriceIs9Pounds() {
             int days = 3;
-            RentalCalculator rentalCalculator = new RentalCalculator(days, category);
+            Rental rentalCalculator = new Rental(days, category);
             
             Assert.AreEqual(9.0, rentalCalculator.Price);
         }
@@ -25,9 +25,9 @@ namespace VideoStore.Test
         [Test]
         public void whenIHaveA1DayRental_thenIEarn1FrequentRentalPoint() {
             int expectedPoint = 1;
-            
+
             int days = 1;
-            RentalCalculator rentalCalculator = new RentalCalculator(days, category);
+            Rental rentalCalculator = new Rental(days, category);
 
             Assert.AreEqual(expectedPoint, rentalCalculator.FrequentRentalPointsEarnt);
         }
@@ -37,7 +37,7 @@ namespace VideoStore.Test
             int expectedPoints = 2;
             
             int days = new Random().Next(2,10);
-            RentalCalculator rentalCalculator = new RentalCalculator(days, category);
+            Rental rentalCalculator = new Rental(days, category);
 
             Assert.AreEqual(expectedPoints, rentalCalculator.FrequentRentalPointsEarnt);
         }

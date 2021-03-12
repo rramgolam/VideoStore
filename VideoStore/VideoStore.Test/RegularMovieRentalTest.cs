@@ -20,7 +20,7 @@ namespace VideoStore.Test
             float expectedPrice = 2.0f;
 
             int days = 2;
-            RentalCalculator rentalCalculator = new RentalCalculator(days, category);
+            Rental rentalCalculator = new Rental(days, category);
 
             Assert.AreEqual(expectedPrice, rentalCalculator.Price);
         }
@@ -31,7 +31,7 @@ namespace VideoStore.Test
             float expectedPrice = 6.5f;
 
             int days = 5;
-            RentalCalculator rentalCalculator = new RentalCalculator(days, category);
+            Rental rentalCalculator = new Rental(days, category);
 
             Assert.AreEqual(expectedPrice, rentalCalculator.Price);
         }
@@ -42,7 +42,7 @@ namespace VideoStore.Test
             int expectedPoints = 1;
 
             int days = new Random().Next(1, 10);
-            RentalCalculator rentalCalculator = new RentalCalculator(days, category);
+            Rental rentalCalculator = new Rental(days, category);
             
             Assert.AreEqual(expectedPoints, rentalCalculator.FrequentRentalPointsEarnt);
         }
@@ -52,8 +52,8 @@ namespace VideoStore.Test
         {
             int expectedPoints = 2;
 
-            RentalCalculator firstRentalCalculator = new RentalCalculator(new Random().Next(1, 10), category);
-            RentalCalculator secondRentalCalculator = new RentalCalculator(new Random().Next(1, 10), category);
+            Rental firstRentalCalculator = new Rental(new Random().Next(1, 10), category);
+            Rental secondRentalCalculator = new Rental(new Random().Next(1, 10), category);
 
             Assert.AreEqual(expectedPoints, firstRentalCalculator.FrequentRentalPointsEarnt
                 + secondRentalCalculator.FrequentRentalPointsEarnt);

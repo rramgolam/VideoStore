@@ -1,11 +1,12 @@
 ﻿using System;
 namespace VideoStore.Models
 {
-    public abstract class Movie {
+    public abstract class MovieCalculator {
         abstract public float calculatePrice(int days);
+        abstract public int calculateFrequentRentalPoints(int days);
     }
 
-    public class RegularMovie : Movie
+    public class RegularMovieCalculator : MovieCalculator
     {
         public override float calculatePrice(int days)
         {
@@ -17,35 +18,51 @@ namespace VideoStore.Models
                 return 1.5f * (days - 2) + 2.0f;
             }
         }
+
+        public override int calculateFrequentRentalPoints(int days)
+        {
+            return 1;
+        }
     }
 
-    public class NewMovie : Movie
+    public class NewMovieCalculator : MovieCalculator
     {
         public override float calculatePrice(int days)
         {
             return days * 3;
         }
+        public override int calculateFrequentRentalPoints(int days)
+        {
+            if (days >= 2) {
+                return 2;
+            }
+            return 1;
+        }
     }
 
-    public class ChildrenMovie : Movie
+    public class ChildrenMovieCalculator : MovieCalculator
     {
         public override float calculatePrice(int days)
         {
             throw new NotImplementedException();
         }
+        public override int calculateFrequentRentalPoints(int days)
+        {
+            throw new NotImplementedException();
+        }
     }
 
-    public static class MovieFactory {
+    public static class MovieCalculatorFactory {
 
-        public static Movie Build(MovieCategory category) {
+        public static MovieCalculator Build(MovieCategory category) {
             
             switch(category) {
                 case MovieCategory.Regular:
-                    return new RegularMovie();
+                    return new RegularMovieCalculator();
                 case MovieCategory.New:
-                    return new NewMovie();
+                    return new NewMovieCalculator();
                 case MovieCategory.Children:
-                    return new ChildrenMovie();
+                    return new ChildrenMovieCalculator();
                 default:
                     break;
             }
@@ -54,17 +71,17 @@ namespace VideoStore.Models
 
     }
 
-    public class RentalCalculator
+    public class Rental
     {
-        public RentalCalculator(int numberOfDays, MovieCategory category)
+        public Rental(int numberOfDays, MovieCategory category)
         {
             this.Days = numberOfDays;
             this.Category = category;
 
-            movie = MovieFactory.Build(category);    
+            movie = MovieCalculatorFactory.Build(category);    
         }
 
-        private Movie movie { get; }
+        private MovieCalculator movie { get; }
         public int Days { get; private set; }
         public MovieCategory Category { get; private set; }
         public float Price {
@@ -75,15 +92,8 @@ namespace VideoStore.Models
 
         public int FrequentRentalPointsEarnt {
             get { 
-                return calculateFrequentRentalPoints();                
+                return movie.calculateFrequentRentalPoints(this.Days);                
             }
-        }
-
-        private int calculateFrequentRentalPoints() {
-            if (this.Days >= 2 && this.Category == MovieCategory.New) {
-                return 2;
-            }
-            return 1;
         }
 
     }
