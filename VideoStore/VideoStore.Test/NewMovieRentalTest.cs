@@ -31,5 +31,14 @@ namespace VideoStore.Test
             Assert.AreEqual(expectedPoint, rentalCalculator.FrequentRentalPointsEarnt);
         }
 
+        [Test]
+        public void whenIHave2OrMoreDaysOfRental_thenIEarn2FrequentRentalPoints() {
+            int expectedPoints = 2;
+            
+            int days = new Random().Next(2,10);
+            RentalCalculator rentalCalculator = new RentalCalculator(days, category);
+
+            Assert.AreEqual(expectedPoints, rentalCalculator.FrequentRentalPointsEarnt);
+        }
     }
 }
