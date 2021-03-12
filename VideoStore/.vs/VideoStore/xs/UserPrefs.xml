@@ -1,10 +1,5 @@
 ﻿<Properties StartupConfiguration="{B4F52A63-A4A6-4388-94F7-35AC1F92BF51}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="VideoStore.Test/NewMovieRentalTest.cs">
-    <Files>
-      <File FileName="VideoStore.Test/UnitTest1.cs" Line="59" Column="2" />
-      <File FileName="VideoStore/Models/RentalCalculator.cs" Line="35" Column="6" />
-      <File FileName="VideoStore.Test/NewMovieRentalTest.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -13,7 +8,7 @@
               <Node name="Models" expanded="True" />
             </Node>
             <Node name="VideoStore.Test" expanded="True">
-              <Node name="RegularRentalTest.cs" selected="True" />
+              <Node name="NewMovieRentalTest.cs" selected="True" />
             </Node>
           </Node>
         </State>
