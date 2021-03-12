@@ -8,7 +8,13 @@ namespace VideoStore.Models
 
         public void calculatePrice()
         {
-            this.Price = 2.0f;
+            if (Days <= 2)
+            {
+                this.Price = 2;
+            } else
+            {
+                this.Price = 1.5f * (this.Days - 2) + 2.0f;
+            }
         }
     }
 }

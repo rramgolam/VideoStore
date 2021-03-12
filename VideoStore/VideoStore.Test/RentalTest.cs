@@ -20,5 +20,16 @@ namespace VideoStore.Test
 
             Assert.AreEqual(expectedPrice, rentalCalculator.Price);
         }
+
+        [Test]
+        public void whenIAdd5DaysToMyRental_thenThePriceShouldBe6pounds50pence()
+        {
+            RentalCalculator rentalCalculator = new RentalCalculator();
+            float expectedPrice = 6.5f;
+            rentalCalculator.Days = 5;
+            rentalCalculator.calculatePrice();
+
+            Assert.AreEqual(expectedPrice, rentalCalculator.Price);
+        }
     }
 }
