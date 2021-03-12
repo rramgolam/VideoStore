@@ -9,7 +9,7 @@ namespace VideoStore.Models
 
         }
 
-        public int Days { get; set; }
+        public int Days { get; private set; }
 
         public float Price {
             get {

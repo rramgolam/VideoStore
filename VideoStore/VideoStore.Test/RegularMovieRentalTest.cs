@@ -4,7 +4,7 @@ using System;
 
 namespace VideoStore.Test
 {
-    public class Tests
+    public class RegularMovieRentalTest
     {
         [SetUp]
         public void Setup()
