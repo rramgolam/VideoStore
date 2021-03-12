@@ -18,7 +18,16 @@ namespace VideoStore.Models
         }
 
         public int FrequentRentalPointsEarnt {
-            get { return 1; }
+            get { 
+                return calculateFrequentRentalPoints();                
+            }
+        }
+
+        private int calculateFrequentRentalPoints() {
+            if (this.Days >= 2 && this.Category == MovieCategory.New) {
+                return 2;
+            }
+            return 1;
         }
 
         private float calculatePrice()
@@ -36,7 +45,7 @@ namespace VideoStore.Models
             } else if (this.Category == MovieCategory.New) {
                 return this.Days * 3;
             }
-            
+
             return 0;
         }
 
