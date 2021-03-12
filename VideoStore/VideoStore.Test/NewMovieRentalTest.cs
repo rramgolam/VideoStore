@@ -25,6 +25,7 @@ namespace VideoStore.Test
         [Test]
         public void whenIHaveA1DayRental_thenIEarn1FrequentRentalPoint() {
             int expectedPoint = 1;
+            
             int days = 1;
             RentalCalculator rentalCalculator = new RentalCalculator(days, category);
 
