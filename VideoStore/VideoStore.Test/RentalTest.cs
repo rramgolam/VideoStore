@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using VideoStore.Models;
 
 namespace VideoStore.Test
 {
@@ -10,9 +11,13 @@ namespace VideoStore.Test
         }
 
         [Test]
-        public void Test1()
+        public void whenIadd2DaysToRental_thenThePriceShouldBe2Pounds()
         {
-            Assert.Fail();
+            RentalCalculator rentalCalculator = new RentalCalculator();
+            float expectedPrice = 2.0f;
+            rentalCalculator.Days = 2;
+
+            Assert.AreEqual(expectedPrice, rentalCalculator.calculatePrice());
         }
     }
 }

@@ -5,5 +5,10 @@ namespace VideoStore.Models
     {
         public int Days { get; set; }
         public float Price { get; private set; }
+
+        public double calculatePrice()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
