@@ -3,8 +3,7 @@ namespace VideoStore.Models
 {
     public class RentalCalculator
     {
-        public RentalCalculator()
-        {
-        }
+        public int Days { get; set; }
+        public float Price { get; private set; }
     }
 }

@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{B4F52A63-A4A6-4388-94F7-35AC1F92BF51}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="VideoStore/Models/RentalCalculator.cs">
+    <Files>
+      <File FileName="VideoStore.Test/UnitTest1.cs" Line="1" Column="1" />
+      <File FileName="VideoStore/Models/RentalCalculator.cs" Line="7" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="VideoStore" expanded="True">
+            <Node name="VideoStore" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="RentalCalculator.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="VideoStore.Test" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.VideoStore FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.VideoStore.Test FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+</Properties>
