@@ -5,8 +5,9 @@ namespace VideoStore.Models
     {
         public int Days { get; set; }
         public float Price { get; private set; }
+        public int FrequentRentalPointsEarnt { get; private set; }
 
-        public void calculatePrice()
+        public void CalculatePrice()
         {
             if (Days <= 2)
             {
@@ -15,6 +16,11 @@ namespace VideoStore.Models
             {
                 this.Price = 1.5f * (this.Days - 2) + 2.0f;
             }
+        }
+
+        public void CalculateFrequenceRentalPoints()
+        {
+            this.FrequentRentalPointsEarnt = 1;
         }
     }
 }
