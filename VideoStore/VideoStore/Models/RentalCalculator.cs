@@ -2,16 +2,15 @@
 namespace VideoStore.Models
 {
     public abstract class MovieCalculator {
-        abstract public float calculatePrice(int days);
-        abstract public int calculateFrequentRentalPoints(int days);
+        abstract public float CalculatePrice(int days);
+        abstract public int CalculateFrequentRentalPoints(int days);
     }
 
     public class RegularMovieCalculator : MovieCalculator
     {
-        public override float calculatePrice(int days)
+        public override float CalculatePrice(int days)
         {
-            if (days <= 2)
-            {
+            if (days <= 2) {
                 return 2;
             } else
             {
@@ -19,7 +18,7 @@ namespace VideoStore.Models
             }
         }
 
-        public override int calculateFrequentRentalPoints(int days)
+        public override int CalculateFrequentRentalPoints(int days)
         {
             return 1;
         }
@@ -27,11 +26,11 @@ namespace VideoStore.Models
 
     public class NewMovieCalculator : MovieCalculator
     {
-        public override float calculatePrice(int days)
+        public override float CalculatePrice(int days)
         {
             return days * 3;
         }
-        public override int calculateFrequentRentalPoints(int days)
+        public override int CalculateFrequentRentalPoints(int days)
         {
             if (days >= 2) {
                 return 2;
@@ -42,11 +41,11 @@ namespace VideoStore.Models
 
     public class ChildrenMovieCalculator : MovieCalculator
     {
-        public override float calculatePrice(int days)
+        public override float CalculatePrice(int days)
         {
             throw new NotImplementedException();
         }
-        public override int calculateFrequentRentalPoints(int days)
+        public override int CalculateFrequentRentalPoints(int days)
         {
             throw new NotImplementedException();
         }
@@ -73,6 +72,7 @@ namespace VideoStore.Models
 
     public class Rental
     {
+        private MovieCalculator movie { get; }
         public Rental(int numberOfDays, MovieCategory category)
         {
             this.Days = numberOfDays;
@@ -81,18 +81,18 @@ namespace VideoStore.Models
             movie = MovieCalculatorFactory.Build(category);    
         }
 
-        private MovieCalculator movie { get; }
+        
         public int Days { get; private set; }
         public MovieCategory Category { get; private set; }
         public float Price {
             get {
-                return movie.calculatePrice(this.Days);
+                return movie.CalculatePrice(this.Days);
             }
         }
 
         public int FrequentRentalPointsEarnt {
             get { 
-                return movie.calculateFrequentRentalPoints(this.Days);                
+                return movie.CalculateFrequentRentalPoints(this.Days);                
             }
         }
 
