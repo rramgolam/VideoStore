@@ -43,11 +43,14 @@ namespace VideoStore.Models
     {
         public override float CalculatePrice(int days)
         {
-            throw new NotImplementedException();
+            return days * 3;
         }
         public override int CalculateFrequentRentalPoints(int days)
         {
-            throw new NotImplementedException();
+            if (days >= 2) {
+                return 2;
+            }
+            return 1;
         }
     }
 

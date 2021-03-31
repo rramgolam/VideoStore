@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using VideoStore.Models;
 
 namespace VideoStore.Controllers
 {
@@ -9,20 +10,36 @@ namespace VideoStore.Controllers
     {
         [HttpGet]
         [Route("calculate")]
-        public ActionResult<CalculatedRental> Calculate() {
-            CalculatedRental calculatedRental = new CalculatedRental();
-            calculatedRental.Price = 0.0f;
-            calculatedRental.FrequentRentalPoints = 0;
+        public ActionResult<CalculatedRental> Calculate(
+            [FromQuery] int rentalDays,
+            [FromQuery] string movieCategory
+        ) {
 
-            return calculatedRental;
+            MovieCategory category;
+            if (Enum.TryParse<MovieCategory>(movieCategory, out category)) {
+                Rental calculator = new Rental(rentalDays, category); 
+                return new CalculatedRental(calculator.Price, calculator.FrequentRentalPointsEarnt);
+            } 
+            return new CalculatedRental();
         } 
         
     }
 
     public class CalculatedRental {
+        public CalculatedRental()
+        {
+            this.Price = 0.0f;
+            this.FrequentRentalPoints = 0;
+        }
 
-        public float? Price { get; set; }
-        public int? FrequentRentalPoints { get; set; }
+        public CalculatedRental(float price, int frequentRentalPoints) 
+        {
+            this.Price = price;
+            this.FrequentRentalPoints = frequentRentalPoints;
+        }
+
+        public float Price { get; set; }
+        public int FrequentRentalPoints { get; set; }
 
     }
 }
